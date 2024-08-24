@@ -24,7 +24,7 @@ export default function Navbar() {
         <a
           href="/home"
           className={`${
-            pathname === '/home' ? 'text-[#124076]' : 'text-dark'
+            pathname === '/home' ? 'text-[#124076]' : 'text-white'
           } hover:text-[#124076]`}
           style={{
             fontSize: '18px', 
@@ -36,7 +36,7 @@ export default function Navbar() {
         <a
           href="/explore"
           className={`${
-            pathname === '/explore' ? 'text-[#124076]' : 'text-dark'
+            pathname === '/explore' ? 'text-[#124076]' : 'text-white'
           } hover:text-[#124076]`}
           style={{
             fontSize: '18px', 
@@ -48,7 +48,7 @@ export default function Navbar() {
         <a
           href="/mini-games"
           className={`${
-            pathname === '/mini-games' ? 'text-[#124076]' : 'text-dark'
+            pathname === '/mini-games' ? 'text-[#124076]' : 'text-white'
           } hover:text-[#124076]`}
           style={{
             fontSize: '18px',
@@ -60,7 +60,7 @@ export default function Navbar() {
         <a
           href="/about-us"
           className={`${
-            pathname === '/about-us' ? 'text-[#124076]' : 'text-dark'
+            pathname === '/about-us' ? 'text-[#124076]' : 'text-white'
           } hover:text-[#124076]`}
           style={{
             fontSize: '18px', // Ukuran font lebih besar
@@ -71,7 +71,7 @@ export default function Navbar() {
         </a>
         <a
           href="/"
-          className="text-dark hover:text-gray-300 border border-white rounded-full px-4 py-2 ml-4"
+          className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2 ml-4"
           style={{
             fontSize: '18px', // Ukuran font lebih besar
             fontWeight: '600',

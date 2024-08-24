@@ -4,7 +4,8 @@ import React from "react";
 export default function Page() {
 
   return (
-    <div >Page
+    //contoh//
+     <div className="bg-green-500 h-screen" >Page  
     </div>
   );
 }

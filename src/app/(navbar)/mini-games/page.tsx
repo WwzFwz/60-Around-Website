@@ -1,26 +1,12 @@
-
 import React from "react";
 
 
-// export default function Page() {
+export default function Page() {
 
-//   return (
-//     <div>
-//       <div ><h1>jsjsj   </h1>
+  return (
+    //contoh//
+     <div className="bg-green-500 h-screen" >Page  
+    </div>
+  );
+}
 
-
-//       </div>
-//     </div>
-//   );
-// }
-
-const MiniGamesPage = () => {
-    return (
-      <div>
-        <h1>Welcome to Mini Games</h1>
-      </div>
-    );
-  };
-  
-export default MiniGamesPage;
-  
