@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.1.0",
+    "@supabase/supabase-js": "^2.45.2",
     "@t3-oss/env-nextjs": "^0.10.1",
     "@tanstack/react-query": "^5.50.0",
     "@trpc/client": "^11.0.0-rc.446",
@@ -52,5 +53,4 @@
     "initVersion": "7.37.0"
   },
   "packageManager": "yarn@1.22.22"
-
 }
