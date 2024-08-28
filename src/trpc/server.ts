@@ -1,21 +1,22 @@
-// import { initTRPC } from '@trpc/server';
-// import superjson from 'superjson';
-// import { createContext } from '~/server/context'; // Make sure this path is correct
+// import "server-only";
 
-// const t = initTRPC.context<typeof createContext>().create({
-//   transformer: superjson,
+// import { headers } from "next/headers";
+// import { cache } from "react";
+
+// import { createCaller } from "~/server/api/root";
+// import { createTRPCContext } from "~/server/api/trpc";
+
+// /**
+//  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
+//  * handling a tRPC call from a React Server Component.
+//  */
+// const createContext = cache(() => {
+//   const heads = new Headers(headers());
+//   heads.set("x-trpc-source", "rsc");
+
+//   return createTRPCContext({
+//     headers: heads,
+//   });
 // });
 
-// // Define your tRPC router here
-// export const appRouter = t.router({
-//   // Define your procedures here, for example:
-//   getUserById: t.procedure.input((id: string) => id).query(({ input }) => {
-//     // Implementation of the procedure
-//     return { id: input, name: 'User' };
-//   }),
-// });
-
-// // Export the type of the router
-// export type AppRouter = typeof appRouter;
-
-
+// export const api = createCaller(createContext);
