@@ -70,7 +70,7 @@ export default function Navbar() {
           About Us
         </a>
         <a
-          href="/"
+          href="/sign-up"
           className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2 ml-4"
           style={{
             fontSize: '18px', // Ukuran font lebih besar
