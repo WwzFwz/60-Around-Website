@@ -16,8 +16,10 @@ export const users = pgTable('users', {
 export const places = pgTable('places', {
   id: varchar('id', { length: 36 }).primaryKey(),
   name: varchar('name', { length: 255 }).notNull(),
+  imageUrl: varchar('image_url', { length: 255 }),
   description: text('description').notNull(),
   location: varchar('location', { length: 255 }).notNull(),
+  priceLevel: varchar('price_level', { length: 10 }), 
   priceRangeLower: integer('price_range_lower').notNull(),
   priceRangeUpper: integer('price_range_upper').notNull(),
   totalLikes: integer('total_likes').default(0).notNull(),
