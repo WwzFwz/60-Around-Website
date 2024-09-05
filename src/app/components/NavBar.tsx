@@ -1,86 +1,142 @@
 'use client';
 
+import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-// import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { FaBars } from 'react-icons/fa'; // Import the hamburger icon
 
 export default function Navbar() {
-  // const [isClient, setIsClient] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const pathname = usePathname();
 
-  // useEffect(() => {
-  //   setIsClient(true);
-  // }, []);
-
-  // if (!isClient) {
-  //   return null;
-  // }
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
-    <header className="flex justify-between items-center p-6 fixed top-0 left-0 right-0 z-10 bg-transparent font-poppins">
-      <div className="text-[#124076]  text-[42px] font-bold leading-[60px]">
-        6O Around
+    <header className="fixed top-0 left-0 right-0 z-10 bg-transparent font-poppins">
+      <div className="flex justify-between items-center p-6">
+        {/* Logo */}
+        <div className="flex items-center pl-16 lg:pl-12">
+          <Image src="/logo_6OAround.svg" alt="6oAround Logo" width={200} height={50} />
+        </div>
+
+        {/* Navbar Links (visible on large screens) */}
+        <nav className="hidden lg:flex space-x-32 items-center">
+          <a
+            href="/"
+            className={`${
+              pathname === '/home' ? 'text-[#124076]' : 'text-white'
+            } hover:text-[#124076]`}
+            style={{ fontSize: '18px', fontWeight: '600' }}
+          >
+            Home
+          </a>
+          <a
+            href="/explore"
+            className={`${
+              pathname === '/explore' ? 'text-[#124076]' : 'text-white'
+            } hover:text-[#124076]`}
+            style={{ fontSize: '18px', fontWeight: '600' }}
+          >
+            Explore
+          </a>
+          <a
+            href="/mini-games"
+            className={`${
+              pathname === '/mini-games' ? 'text-[#124076]' : 'text-white'
+            } hover:text-[#124076]`}
+            style={{ fontSize: '18px', fontWeight: '600' }}
+          >
+            Mini Games
+          </a>
+          <a
+            href="/about-us"
+            className={`${
+              pathname === '/about-us' ? 'text-[#124076]' : 'text-white'
+            } hover:text-[#124076]`}
+            style={{ fontSize: '18px', fontWeight: '600' }}
+          >
+            About Us
+          </a>
+          <a
+            href="/login"
+            className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2 ml-4"
+            style={{ fontSize: '18px', fontWeight: '600', lineHeight: '30px' }}
+          >
+            Sign Up
+          </a>
+        </nav>
+
+        {/* Hamburger Icon (visible on small screens) */}
+        <div className="lg:hidden">
+          <button onClick={toggleSidebar} className="text-3xl text-white">
+            <FaBars />
+          </button>
+        </div>
       </div>
-      <nav className="flex space-x-32 items-center"> 
-        <a
-          href="/home"
-          className={`${
-            pathname === '/home' ? 'text-[#124076]' : 'text-white'
-          } hover:text-[#124076]`}
-          style={{
-            fontSize: '18px', 
-            fontWeight: '600',
-          }}
+
+      {/* Sidebar for mobile view */}
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-[#F9E897] z-50 transform ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } transition-transform duration-300 ease-in-out lg:hidden`}
+      >
+        {/* Close button */}
+        <button
+          onClick={toggleSidebar}
+          className="text-2xl text-[#124076] p-4"
         >
-          Home
-        </a>
-        <a
-          href="/explore"
-          className={`${
-            pathname === '/explore' ? 'text-[#124076]' : 'text-white'
-          } hover:text-[#124076]`}
-          style={{
-            fontSize: '18px', 
-            fontWeight: '600',
-          }}
-        >
-          Explore
-        </a>
-        <a
-          href="/mini-games"
-          className={`${
-            pathname === '/mini-games' ? 'text-[#124076]' : 'text-white'
-          } hover:text-[#124076]`}
-          style={{
-            fontSize: '18px',
-            fontWeight: '600',
-          }}
-        >
-          Mini Games
-        </a>
-        <a
-          href="/about-us"
-          className={`${
-            pathname === '/about-us' ? 'text-[#124076]' : 'text-white'
-          } hover:text-[#124076]`}
-          style={{
-            fontSize: '18px', // Ukuran font lebih besar
-            fontWeight: '600',
-          }}
-        >
-          About Us
-        </a>
-        <a
-          href="/"
-          className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2 ml-4"
-          style={{
-            fontSize: '18px', // Ukuran font lebih besar
-            fontWeight: '600',
-            lineHeight: '30px',
-          }}
-        >
-          Sign Up
-        </a>
-      </nav>
+          &times;
+        </button>
+
+        {/* Sidebar content */}
+        <nav className="flex flex-col space-y-4 p-6">
+          <a
+            href="/"
+            className={`${
+              pathname === '/' ? 'text-[#124076]' : 'text-white'
+            } hover:text-[#124076]`}
+            style={{ fontSize: '18px', fontWeight: '600' }}
+          >
+            Home
+          </a>
+          <a
+            href="/explore"
+            className={`${
+              pathname === '/explore' ? 'text-[#124076]' : 'text-white'
+            } hover:text-[#124076]`}
+            style={{ fontSize: '18px', fontWeight: '600' }}
+          >
+            Explore
+          </a>
+          <a
+            href="/mini-games"
+            className={`${
+              pathname === '/mini-games' ? 'text-[#124076]' : 'text-white'
+            } hover:text-[#124076]`}
+            style={{ fontSize: '18px', fontWeight: '600' }}
+          >
+            Mini Games
+          </a>
+          <a
+            href="/about-us"
+            className={`${
+              pathname === '/about-us' ? 'text-[#124076]' : 'text-white'
+            } hover:text-[#124076]`}
+            style={{ fontSize: '18px', fontWeight: '600' }}
+          >
+            About Us
+          </a>
+          <a
+            href="/login"
+            className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2"
+            style={{ fontSize: '18px', fontWeight: '600', lineHeight: '30px' }}
+          >
+            Sign Up
+          </a>
+        </nav>
+      </div>
     </header>
   );
 }
