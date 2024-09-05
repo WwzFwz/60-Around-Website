@@ -1,15 +1,14 @@
 import "~/styles/globals.css";
-import { type Metadata } from "next";
-import { TRPCReactProvider } from "~/trpc/react";
-import { Poppins } from 'next/font/google';
+import { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import ClientLayout from './ClientLayout'; // Import the ClientLayout component
 
 const poppins = Poppins({
-  weight: ['400', '700'],    
-  style: ['normal', 'italic'], 
-  subsets: ['latin'],         
-  display: 'swap',            
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
 });
-
 
 export const metadata: Metadata = {
   title: "6O-Website",
@@ -19,14 +18,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={poppins.className}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+      <body className="h-screen max-h-screen overflow-y-auto">
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
 }
-
-

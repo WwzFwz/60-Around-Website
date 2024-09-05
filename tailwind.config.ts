@@ -1,6 +1,6 @@
 import { type Config } from "tailwindcss";
 // import { fontFamily } from "tailwindcss/defaultTheme";
-
+// const lineClamp = require('@tailwindcss/line-clamp');
 export default {
   content: ["./src/**/*.tsx"],
   theme: {
@@ -11,5 +11,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [ ],
 } satisfies Config;
