@@ -1,95 +1,137 @@
-// import React from "react";
-
-
-// export default function Page() {
-
-//   return (
-//     //contoh//
-//      <div className="bg-green-500 h-screen" >Page  
-//     </div>
-//   );
-// }
-
-"use client"
-
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
-export default function PlaceDetail() {
-  const router = useRouter();
-  const { id } = router.query;
+// Mockup data
+const mockPlace = {
+  id: '1',
+  name: 'Dots Boardgame Cafe',
+  imageUrl: '/places/Place2-1.svg',
+  description:
+    'Dots BoardGame Cafe adalah tempat yang sempurna untuk berkumpul bersama teman dan keluarga sambil menikmati berbagai pilihan boardgame yang seru dan menantang. Di sini, Anda dapat menemukan berbagai macam permainan, mulai dari yang klasik hingga yang terbaru, untuk semua usia.',
+  location: 'Jalan Ganesha No. 10, Bandung, Indonesia',
+  priceLevel: 2, // Number between 1 and 3
+  priceRangeLower: 25000,
+  priceRangeUpper: 50000,
+  totalLikes: 216,
+  totalDislikes: 0,
+  categories: ['Foodies', 'Entertainment'], // Array of strings
+};
 
-  // Mock data untuk detail tempat. Anda bisa menggantinya dengan data dari API atau database.
-  const placeDetail = {
-    name: 'Dots Boardgame Cafe',
-    votes: 216,
-    priceLevel: '$$',
-    priceRange: '25-50k/orang',
-    categories: ['game', 'food'],
-    description: 'Dots BoardGame Cafe adalah tempat yang sempurna untuk berkumpul bersama teman dan keluarga sambil menikmati berbagai pilihan boardgame yang seru dan menantang...',
-    address: 'Jl. Industri, Bandung',
-    gmapsUrl: 'https://www.google.com/maps/embed?...',
-    images: [
-      '/places/dots-boardgame-cafe.jpg',
-      '/places/place2-1.svg',
-      '/places/place3-1.svg',
-      '/places/place4-1.svg',
-    ],
-  };
+// Function to generate the price level icons
+const renderPriceLevel = (level: number) => {
+  const filledIcon = '/icons/mdi_dollar.svg';
+  const greyIcon = '/icons/mdi_dollar_grey.svg';
+  const icons = [];
+
+  // Push the correct number of filled icons
+  for (let i = 0; i < level; i++) {
+    icons.push(<Image key={`filled-${i}`} src={filledIcon} alt="Price Level" width={20} height={20} />);
+  }
+
+  // Push the remaining grey icons
+  for (let i = level; i < 3; i++) {
+    icons.push(<Image key={`grey-${i}`} src={greyIcon} alt="Price Level" width={20} height={20} />);
+  }
+
+  return <div className="flex items-center space-x-1">{icons}</div>;
+};
+
+const ViewPlacePage: React.FC = () => {
+  // Construct Google Maps URL using the location (address)
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    mockPlace.location
+  )}`;
 
   return (
-    <div className="container mx-auto py-8 px-4 flex">
-      <div className="w-1/2">
+    <div className="flex flex-col lg:flex-row justify-center items-center lg:items-start lg:space-x-6 p-6 text-[#124076]">
+      {/* Back Arrow */}
+      <Link href="/explore/categories">
+        <button className="absolute top-32 left-2 rounded-full p-2">
+          <Image src="/back_arrow.svg" alt="Back" width={40} height={40} />
+        </button>
+      </Link>
+
+      {/* Left Section */}
+      <div className="w-full lg:w-1/2 mb-6 lg:mb-0 flex flex-col items-center">
+        {/* Image */}
         <Image
-          src={'Place2-1.svg'}
-          alt={placeDetail.name}
-          width={500}
-          height={400}  
+          src={mockPlace.imageUrl}
+          alt={mockPlace.name}
+          width={600}
+          height={400}
           className="rounded-lg"
         />
-        <div className="flex mt-4 space-x-2">
-          {placeDetail.images.slice(1).map((image, index) => (
-            <Image
-              key={index}
-              src={image}
-              alt={`Additional Image ${index + 1}`}
-              width={100}
-              height={100}
-              className="rounded-lg"
-            />
-          ))}
+
+        {/* Text Above Button */}
+        <p className="mt-4 text-lg font-bold text-[#124076] text-left w-[600px]">
+          Sudah Pernah Kesini?
+        </p>
+
+        {/* Review Button */}
+        <Link href={`/explore/entertainment/id/review`}>
+          <button className="mt-2 w-[600px] bg-[#F9E897] text-[#124076] font-bold py-4 text-lg rounded-lg">
+            Review
+          </button>
+        </Link>
+      </div>
+      {/* Right Section */}
+      <div className="w-full lg:w-1/2 pl-8 lg:pl-0 flex flex-col lg:h-[calc(100vh-200px)] lg:flex-grow">
+        {/* Place Title */}
+        <h1 className="text-3xl font-bold mb-4">{mockPlace.name}</h1>
+
+        {/* Votes, Price Level, Price Range, Categories */}
+        <div className="flex items-center text-lg mb-4 space-x-4">
+          <span>{mockPlace.totalLikes} Votes</span>
+          <span>|</span>
+          {/* Render the price level icons */}
+          <div className="flex items-center">
+            {renderPriceLevel(mockPlace.priceLevel)}
+          </div>
+          <span>|</span>
+          <span>
+            {mockPlace.priceRangeLower} - {mockPlace.priceRangeUpper} / orang
+          </span>
+          <span>|</span>
+          {/* Category Logos */}
+          <div className="flex space-x-2">
+            {mockPlace.categories.map((category) => (
+              <div key={category} className="flex items-center">
+                <Image
+                  src={`/icons/${category.toLowerCase()}.svg`} // Assuming logo filenames are lowercase
+                  alt={category}
+                  width={30}
+                  height={30}
+                  className="mr-1"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="mt-4">
-          <Link href="#">
-            <a className="text-blue-500 underline">Sudah ke Sini?</a>
+
+        {/* Description */}
+        <p className="text-lg mb-6 text-black">{mockPlace.description}</p>
+
+        {/* Google Maps Image with "Explore" Button */}
+        <div className="relative mt-auto pb-6">  {/* mt-auto pushes this element to the bottom */}
+          <Image
+            src="/gmaps-test.svg" // Background image from g-maps folder
+            alt="Map Preview"
+            width={820}
+            height={200}
+            className="rounded-lg"
+          />
+          {/* Button in the top-right corner */}
+          <Link href={googleMapsUrl} target="_blank">
+            <button className="absolute bottom-8 right-8 bg-[#F9E897] text-[#124076] font-bold py-2 px-4 rounded-lg">
+              Explore!
+            </button>
           </Link>
         </div>
-        <button className="mt-4 bg-yellow-400 text-gray-800 py-2 px-4 rounded-lg hover:bg-yellow-500">
-          Review
-        </button>
       </div>
-      <div className="w-1/2 pl-8">
-        <h1 className="text-4xl font-bold mb-4">{placeDetail.name}</h1>
-        <p className="text-gray-600 mb-4">
-          {placeDetail.votes} Vote | {placeDetail.priceLevel} | {placeDetail.priceRange}
-        </p>
-        <p className="text-gray-700 mb-8">{placeDetail.description}</p>
-        <div className="h-64">
-          <iframe
-            src={placeDetail.gmapsUrl}
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
-        </div>
-        <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600">
-          Explore!
-        </button>
-      </div>
+
     </div>
   );
-}
+};
+
+export default ViewPlacePage;
