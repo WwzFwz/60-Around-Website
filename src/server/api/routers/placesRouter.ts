@@ -1,79 +1,99 @@
-// import { z } from 'zod';
-// import { createTRPCRouter, publicProcedure} from '~/server/api/trpc';
-// import { db } from '~/server/db/db';
-// import { places, placeCategories,categories } from '~/server/db/schema';
-// import { eq } from 'drizzle-orm';
+// src/server/trpc/routers/placeRouter.ts
+import { z } from 'zod';
+import { createTRPCRouter, publicProcedure } from '../trpc';
+import { db } from '~/server/db';
+import { places,placeCategories,categories } from '~/server/db/schema';
+import { eq } from 'drizzle-orm';
 
-// interface Place {
-//   id: string;
-//   name: string;
-//   imageUrl: string | null;
-//   description: string;
-//   location: string;
-//   priceLevel: string | null;
-//   priceRangeLower: number;
-//   priceRangeUpper: number;
-//   totalLikes: number;
-//   totalDislikes: number;
-//   createdAt: Date;
-//   updatedAt: Date;
-// }
+type PlaceWithCategories = {
+  id: string;
+  name: string;
+  imageUrl: string | null;
+  description: string;
+  totalLikes: number;
+  priceLevel: number;
+  categories: string[];
+};
 
-// interface Category {
-//   name: string;
-// }
+export const placesRouter = createTRPCRouter({
+  getPlacesByCategory: publicProcedure
+    .input(
+      z.object({
+        categoryName: z.string(), // Menggunakan nama kategori sebagai input
+      })
+    )
+    .query(async ({ input }) => {
+      // Query untuk mendapatkan places berdasarkan nama kategori
+      const placesByCategory = await db
+        .select()
+        .from(places)
+        .innerJoin(placeCategories, eq(placeCategories.placeId, places.id))
+        .innerJoin(categories, eq(categories.id, placeCategories.categoryId))
+        .where(eq(categories.name, input.categoryName));
 
-// interface PlaceWithCategories {
-//   place: Place;
-//   categories: string[];
-// }
+      return placesByCategory;
+    }),
+  getCategoriesByPlaceId: publicProcedure
+    .input(
+      z.object({
+        placeId: z.string(), // Input berupa ID tempat
+      })
+    )
+    .query(async ({ input }) => {
+      // Query untuk mendapatkan kategori berdasarkan ID tempat
+      const categoriesForPlace = await db
+        .select({
+          id: categories.id,
+          name: categories.name,
+        })
+        .from(categories)
+        .innerJoin(
+          placeCategories,
+          eq(placeCategories.categoryId, categories.id)
+        )
+        .where(eq(placeCategories.placeId, input.placeId));
 
-// export const placesRouter = createTRPCRouter({
-//   // Get Place by ID
-//   // getPlaceById: publicProcedure
-//   //   .input(z.string())
-//   //   .query(async ({ input }) => {
-//   //     const place = await db.select().from(places).where(eq(places.id, input)).first();
-//   //     return place;
-//   //   }),
-
-//   // getPlacesByCategory: publicProcedure
-//   //   .input(z.string())
-//   //   .query(async ({ input }) => {
-//   //     const categoryPlaces = await db
-//   //       .select()
-//   //       .from(places)
-//   //       .innerJoin(placeCategories, eq(placeCategories.categoryId, input))
-//   //       .where(eq(places.id, placeCategories.placeId));
-//   //     return categoryPlaces;
-//   //   }),
-
-//       getPlacesByCategory: publicProcedure
-//       .input(z.string())  // Accept the category name as input
-//       .query(async ({ input }) => {
-//         const categoryPlaces = await db
-//           .select({
-//             id: places.id,
-//             name: places.name,
-//             imageUrl: places.imageUrl,
-//             description: places.description,
-//             location: places.location,
-//             priceLevel: places.priceLevel,
-//             priceRangeLower: places.priceRangeLower,
-//             priceRangeUpper: places.priceRangeUpper,
-//             totalLikes: places.totalLikes,
-//             totalDislikes: places.totalDislikes,
-//             createdAt: places.createdAt,
-//             updatedAt: places.updatedAt,
-//           })
-//           .from(places)
-//           .innerJoin(placeCategories, eq(placeCategories.placeId, places.id))
-//           .innerJoin(categories, eq(categories.id, placeCategories.categoryId))
-//           .where(eq(categories.name, input))  // Filter by the specific category name
-//           .groupBy(places.id);
-    
-//         return categoryPlaces;
-//       }),
+      return categoriesForPlace;
+    }),
+    getPlaceById: publicProcedure
+    .input(
+      z.object({
+        placeId: z.string().uuid(), // Menggunakan ID tempat sebagai input
+      })
+    )
+    .query(async ({ input }) => {
+      const place = await db
+        .select()
+        .from(places)
+        .where(eq(places.id, input.placeId))
+        .limit(1); // Ambil hanya satu tempat berdasarkan id
+  
+      // Jika tempat ditemukan, kembalikan data tempat
+      if (place.length > 0) {
+        return place[0];
+      } else {
+        throw new Error("Place not found");
+      }
+    }),
+    getTotalLikesDislikes: publicProcedure
+    .input(
+      z.object({
+        placeId: z.string(),
+      })
+    )
+    .query(async ({ input }) => {
+      const place = await db
+        .select({
+          totalLikes: places.totalLikes,
+          totalDislikes: places.totalDislikes,
+        })
+        .from(places)
+        .where(eq(places.id, input.placeId))
+        .limit(1);
+  
+      return place[0];
+    }),
   
 
-// });
+});
+

@@ -1,8 +1,8 @@
-import { createTRPCRouter } from "~/server/api/trpc";
-import { placesRouter } from "~/server/api/routers/placesRouter";
+import { createTRPCRouter ,createCallerFactory} from "~/server/api/trpc";
+// import { placesRouter } from "~/server/api/routers/placesRouter";
 import { bookmarksRouter } from "~/server/api/routers/bookmarksRouter";
 import { reviewsRouter } from "~/server/api/routers/reviewsRouter";
-import { createCallerFactory } from "@trpc/server/unstable-core-do-not-import";
+import { placesRouter } from "./routers/placesRouter";
 // import { userRouter } from "~/server/api/routers/userRouter";
 
 // Define the context type
@@ -26,4 +26,4 @@ export const appRouter = createTRPCRouter({
 export type AppRouter = typeof appRouter;
 
 
-
+export const createCaller = createCallerFactory(appRouter);

@@ -1,1 +1,0 @@
-ALTER TABLE "places" ALTER COLUMN "price_level" DROP NOT NULL;
