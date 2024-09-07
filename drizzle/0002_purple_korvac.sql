@@ -1,1 +1,0 @@
-ALTER TABLE places ADD COLUMN price_level VARCHAR(10);

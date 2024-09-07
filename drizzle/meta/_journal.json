@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1724751523451,
-      "tag": "0000_skinny_dust",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1724764938466,
-      "tag": "0001_complex_black_tarantula",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1724772284287,
-      "tag": "0002_purple_korvac",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1724772414151,
-      "tag": "0003_huge_luminals",
+      "when": 1725596414615,
+      "tag": "0000_natural_power_pack",
       "breakpoints": true
     }
   ]

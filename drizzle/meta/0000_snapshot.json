@@ -1,5 +1,5 @@
 {
-  "id": "e64cbe99-5e8b-4940-82f0-b926d69e8eaa",
+  "id": "da8a4acd-b836-4034-a2dc-d5012c43cffc",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -10,13 +10,13 @@
       "columns": {
         "user_id": {
           "name": "user_id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
         "place_id": {
           "name": "place_id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         }
@@ -67,9 +67,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "name": {
           "name": "name",
@@ -103,13 +104,13 @@
       "columns": {
         "place_id": {
           "name": "place_id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
         "category_id": {
           "name": "category_id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         }
@@ -160,9 +161,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "name": {
           "name": "name",
@@ -170,15 +172,33 @@
           "primaryKey": false,
           "notNull": true
         },
+        "image_url": {
+          "name": "image_url",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
         "description": {
           "name": "description",
           "type": "text",
           "primaryKey": false,
           "notNull": true
         },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
         "location": {
           "name": "location",
           "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "price_level": {
+          "name": "price_level",
+          "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
@@ -241,13 +261,13 @@
         },
         "place_id": {
           "name": "place_id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": true
         },
         "user_id": {
           "name": "user_id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": false,
           "notNull": false
         },
@@ -329,9 +349,10 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar(36)",
+          "type": "uuid",
           "primaryKey": true,
-          "notNull": true
+          "notNull": true,
+          "default": "gen_random_uuid()"
         },
         "email": {
           "name": "email",
