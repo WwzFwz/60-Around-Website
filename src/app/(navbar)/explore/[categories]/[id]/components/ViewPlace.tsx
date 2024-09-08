@@ -51,7 +51,7 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
 
   // Construct Google Maps URL using the location (address)
   const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    place.location
+    place.name
   )}`;
 
   return (
@@ -107,7 +107,7 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
             {categories?.map((category: Category) => (
               <div key={category.id} className="flex items-center">
                 <Image
-                  src={`/icons/${category.name.toLowerCase()}.svg`} // Assuming logo filenames are lowercase
+                  src={`/icons/${category.name.toLowerCase()}.svg`} 
                   alt={category.name}
                   width={30}
                   height={30}
@@ -118,7 +118,7 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
           </div>
         </div>
 
-        {/* Description */}
+        {/* Content */}
         <p className="text-lg mb-6 text-black">{place.description}</p>
 
         {/* Google Maps Image with "Explore" Button */}

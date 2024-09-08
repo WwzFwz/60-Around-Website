@@ -2,24 +2,9 @@ import { z } from 'zod';
 import { createTRPCRouter,  publicProcedure } from '~/server/api/trpc';
 import { db } from '~/server/db';
 import { reviews,places} from '~/server/db/schema';
-import { eq } from 'drizzle-orm';
-import { sql } from 'drizzle-orm';
+import { eq,sql,desc } from 'drizzle-orm';
 
 export const reviewsRouter = createTRPCRouter({
-  // Create Review
-  createReview: publicProcedure
-    .input(z.object({
-      placeId: z.string(),
-      userId: z.string(),
-      content: z.string(),
-      like: z.boolean(),
-      imageUrl: z.string().optional(),
-      isAnonymous: z.boolean().default(false),
-    }))
-    .mutation(async ({ input }) => {
-      const newReview = await db.insert(reviews).values(input).returning();
-      return newReview;
-    }),
 
   // Get Reviews for Place
     getReviewsByPlaceId: publicProcedure
@@ -32,10 +17,11 @@ export const reviewsRouter = createTRPCRouter({
       const reviewsData = await db
         .select()
         .from(reviews)
-        .where(eq(reviews.placeId, input.placeId));
-
+        .where(eq(reviews.placeId, input.placeId))
+        .orderBy((aliases) => desc(aliases.createdAt)); // Use orderBy with descending createdAt
       return reviewsData;
     }),
+    
     addReview: publicProcedure
     .input(
       z.object({
@@ -61,19 +47,18 @@ export const reviewsRouter = createTRPCRouter({
         await db
           .update(places)
           .set({
-            totalLikes: sql`totalLikes + 1`,
+            totalLikes: sql`total_likes + 1`,
           })
           .where(eq(places.id, input.placeId));
       } else {
         await db
           .update(places)
           .set({
-            totalDislikes: sql`totalDislikes + 1`,
+            totalDislikes: sql`total_dislikes + 1`,
           })
           .where(eq(places.id, input.placeId));
-      }
-  
       return review;
+    }
     }),
   
 });

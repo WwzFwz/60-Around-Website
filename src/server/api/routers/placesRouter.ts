@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { createTRPCRouter, publicProcedure } from '../trpc';
 import { db } from '~/server/db';
 import { places,placeCategories,categories } from '~/server/db/schema';
-import { eq } from 'drizzle-orm';
+import { eq,desc } from 'drizzle-orm';
 
 type PlaceWithCategories = {
   id: string;
@@ -30,7 +30,6 @@ export const placesRouter = createTRPCRouter({
         .innerJoin(placeCategories, eq(placeCategories.placeId, places.id))
         .innerJoin(categories, eq(categories.id, placeCategories.categoryId))
         .where(eq(categories.name, input.categoryName));
-
       return placesByCategory;
     }),
   getCategoriesByPlaceId: publicProcedure
