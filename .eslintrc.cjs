@@ -6,7 +6,7 @@ const config = {
   },
   "plugins": [
     "@typescript-eslint",
-    "drizzle"
+    "drizzle",
   ],
   "extends": [
     "next/core-web-vitals",
