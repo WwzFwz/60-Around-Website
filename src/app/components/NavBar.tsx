@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center p-6">
         {/* Logo */}
         <div className="flex items-center pl-16 lg:pl-12">
-          <Image src="/logo_6OAround.svg" alt="6oAround Logo" width={200} height={50} />
+          <Image src="/go_round_logo.png" alt="6oAround Logo" width={200} height={50} />
         </div>
 
         {/* Navbar Links (visible on large screens) */}
