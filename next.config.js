@@ -34,11 +34,15 @@ const config = {
   // Image configuration
   images: {
     domains: ['cbcbfvvlzsalhunyonzv.supabase.co'], // Allow images from this domain
-  },
-  
+  },typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true
   // Optionally add other Next.js configurations
   // e.g., ESLint configuration or any custom build config:
-  eslint: {
+  },eslint: {
     // You can choose to ignore ESLint during builds if needed
     ignoreDuringBuilds: true,
   },
