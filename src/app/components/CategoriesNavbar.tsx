@@ -15,7 +15,7 @@ const CategoriesNavbar: React.FC = () => {
     <nav className="bg-[#F9E897]  h-32 w-full flex  justify-between items-center">
       {/* Logo */}
       <div className="flex items-center pl-16 lg:pl-12">
-        <Image src="/go_around_logo.png" alt="6oAround Logo" width={200} height={50} />
+        <Image src="/go_round_logo.png" alt="6oAround Logo" width={200} height={50} />
       </div>
 
       {/* Search bar (visible only on large screens) */}

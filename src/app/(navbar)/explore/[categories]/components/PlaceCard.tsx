@@ -216,7 +216,7 @@ const PlaceCard: React.FC<PlaceCardProps> = ({
                 categories?.map((category : Category) => (
                   <Image
                     key={category.id}
-                    src={`/icons/${category.name.toLowerCase()}.svg`}
+                    src={`/icons/${category.name.toLowerCase()}.png`}
                     alt={`${category.name} Icon`}
                     width={20}
                     height={20}

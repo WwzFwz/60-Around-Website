@@ -28,19 +28,19 @@ export default function Page() {
         <div className="flex flex-wrap justify-center gap-4 lg:justify-between max-w-5xl mx-auto w-full">
           <Link href="/explore/entertainment">
             <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
-              <Image src="/icons/entertainment.svg" alt="Entertainment" width={20} height={20} />
+              <Image src="/icons/entertainment.png" alt="Entertainment" width={20} height={20} />
               <span>Entertainment</span>
             </button>
           </Link>
           <Link href="/explore/foodies">
             <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
-              <Image src="/icons/foodies.svg" alt="Foodies" width={20} height={20} />
+              <Image src="/icons/foodies.png" alt="Foodies" width={20} height={20} />
               <span>Foodies</span>
             </button>
           </Link>
           <Link href="/explore/study">
             <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
-              <Image src="/icons/study.svg" alt="Study" width={20} height={20} />
+              <Image src="/icons/study.png" alt="Study" width={20} height={20} />
               <span>Study</span>
             </button>
           </Link>
@@ -52,7 +52,7 @@ export default function Page() {
           </Link>
           <Link href="/explore/household">
             <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
-              <Image src="/icons/household.svg" alt="Household" width={20} height={20} />
+              <Image src="/icons/household.png" alt="Household" width={20} height={20} />
               <span>Household</span>
             </button>
           </Link>
