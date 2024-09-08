@@ -1,6 +1,6 @@
 
 
-// // Import environment variables or run env validation
+// Import environment variables or run env validation
 // await import("./src/env.js");
 
 // /** @type {import("next").NextConfig} */
@@ -24,23 +24,20 @@
 
 // export default config;
 
-// next.config.js
-
-// Import environment variables or run environment validation
-await import("./src/env.js");
-
 /** @type {import("next").NextConfig} */
 const config = {
   // Image configuration
   images: {
-    // Use the new `remotePatterns` instead of `domains` as recommended by Next.js
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'cbcbfvvlzsalhunyonzv.supabase.co',
-        pathname: '/**', // Allow all images from this domain
+        pathname: '/storage/v1/object/public/placePict/**',
       },
     ],
+    // Allow external SVGs (use with caution)
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;", // Optional, adds security layer
   },
 
   // TypeScript configuration
@@ -51,12 +48,9 @@ const config = {
 
   // ESLint configuration
   eslint: {
-    // Ignore ESLint errors during builds if necessary
+    // Ignore ESLint errors during production builds
     ignoreDuringBuilds: true,
   },
-
-  // You can add more Next.js configurations here as needed
 };
 
 export default config;
-
