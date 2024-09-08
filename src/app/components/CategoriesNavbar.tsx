@@ -12,7 +12,7 @@ const CategoriesNavbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-[#F9E897] p-4 h-32 w-full flex  justify-between items-center">
+    <nav className="bg-[#F9E897]  h-32 w-full flex  justify-between items-center">
       {/* Logo */}
       <div className="flex items-center pl-16 lg:pl-12">
         <Image src="/logo_6OAround.svg" alt="6oAround Logo" width={200} height={50} />
@@ -39,7 +39,7 @@ const CategoriesNavbar: React.FC = () => {
 
       {/* Sign Up button (closer to bookmark) */}
       <div className="hidden lg:flex ml-4"> {/* Reduced margin for closer placement */}
-        <Link href="/signup" className="px-6 py-3 border-2 bg-[#124076] text-white rounded-lg"> {/* Slightly smaller button */}
+        <Link href="/" className="px-6 py-3 border-2 bg-[#124076] text-white rounded-lg"> {/* Slightly smaller button */}
           Sign Up
         </Link>
       </div>
@@ -84,7 +84,7 @@ const CategoriesNavbar: React.FC = () => {
           </div>
 
           {/* Sign Up button */}
-          <Link href="/signup" className="px-8 py-4 border-2 bg-[#124076] text-white rounded-lg">
+          <Link href="/signup" className="px-2 ml-2 py-4 border-2 bg-[#124076] text-white rounded-lg">
             Sign Up
           </Link>
         </div>

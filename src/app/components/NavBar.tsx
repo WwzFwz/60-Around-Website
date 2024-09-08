@@ -22,7 +22,7 @@ export default function Navbar() {
         </div>
 
         {/* Navbar Links (visible on large screens) */}
-        <nav className="hidden lg:flex space-x-32 items-center">
+        <nav className="hidden lg:flex space-x-64 items-center">
           <a
             href="/"
             className={`${
@@ -45,12 +45,12 @@ export default function Navbar() {
             href="/mini-games"
             className={`${
               pathname === '/mini-games' ? 'text-[#124076]' : 'text-white'
-            } hover:text-[#124076]`}
+            } hover:text-[#124076] ml-4`}
             style={{ fontSize: '18px', fontWeight: '600' }}
           >
             Mini Games
           </a>
-          <a
+          {/* <a
             href="/about-us"
             className={`${
               pathname === '/about-us' ? 'text-[#124076]' : 'text-white'
@@ -58,9 +58,9 @@ export default function Navbar() {
             style={{ fontSize: '18px', fontWeight: '600' }}
           >
             About Us
-          </a>
+          </a> */}
           <a
-            href="/login"
+            href="/"
             className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2 ml-4"
             style={{ fontSize: '18px', fontWeight: '600', lineHeight: '30px' }}
           >
@@ -119,7 +119,7 @@ export default function Navbar() {
           >
             Mini Games
           </a>
-          <a
+          {/* <a
             href="/about-us"
             className={`${
               pathname === '/about-us' ? 'text-[#124076]' : 'text-white'
@@ -127,7 +127,7 @@ export default function Navbar() {
             style={{ fontSize: '18px', fontWeight: '600' }}
           >
             About Us
-          </a>
+          </a> */}
           <a
             href="/login"
             className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2"

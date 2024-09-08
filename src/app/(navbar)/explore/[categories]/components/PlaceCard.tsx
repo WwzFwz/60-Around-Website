@@ -153,7 +153,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { api } from "~/trpc/react";
-import { string } from "zod";
 type PlaceCardProps = {
   imageUrl: string;
   name: string;
@@ -202,19 +201,14 @@ const PlaceCard: React.FC<PlaceCardProps> = ({
   return (
     <Link href={`/explore/${category}/${placeId}`}>
       <div className="max-w-xs rounded-2xl overflow-hidden shadow-lg my-4 mx-6 h-96">
-        <Image className="w-full h-48 object-cover" src={imageUrl} alt={name} width={400} height={300} />
+        <Image className="w-full h-48 object-cover" src={imageUrl? imageUrl:'/default-image.svg'} alt={name} width={400} height={300} />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{name}</div>
           <div className="flex items-center justify-between text-gray-700 text-sm mb-2">
-            <div>{likes} Likes</div>
+            <div>{likes} Upvotes</div>
             {/* Render price level icons */}
             {renderPriceLevel(priceLevel)}
-            {/* <div className="flex space-x-2">
-              {categories.map((icon, index) => (
-                <Image key={index} src={`/icons/${icon.toLowerCase()}.svg`} alt="Category Icon" className="w-5 h-5" width={20} height={20} />
-              ))}
-            </div> */}
-          {/* Tampilkan kategori tempat */}
+
             <div className="flex space-x-2 mt-2">
               {isLoading ? (
                 <span>Loading...</span>
@@ -233,7 +227,7 @@ const PlaceCard: React.FC<PlaceCardProps> = ({
             </div>
 
           </div>
-          <p className="text-gray-700 text-base line-clamp-5">{description}</p>
+          <p className="text-gray-700 text-base line-clamp-4">{description}</p>
         </div>
       </div>
     </Link>
