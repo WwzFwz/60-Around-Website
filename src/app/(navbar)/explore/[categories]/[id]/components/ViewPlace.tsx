@@ -33,7 +33,6 @@ type ViewPlaceProps = {
   id: string; // Now fetching place based on the placeId
   category: string;
 };
-const placeId = "c2196275-b25b-4cd4-86d1-d752afda4ecd"
 const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
   // Fetch place data by placeId
   const { data: place, isLoading: isPlaceLoading } = api.places.getPlaceById.useQuery({placeId : id || ''});
@@ -80,7 +79,7 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
         </p>
 
         {/* Review Button */}
-        <Link href={`/explore/${category}/${placeId}/review`}>
+        <Link href={`/explore/${category}/${id}/review`}>
           <button className="mt-2 w-[600px] bg-[#F9E897] text-[#124076] font-bold py-4 text-lg rounded-lg">
             Review
           </button>
