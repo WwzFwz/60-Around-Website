@@ -15,7 +15,7 @@ const CategoriesNavbar: React.FC = () => {
     <nav className="bg-[#F9E897]  h-32 w-full flex  justify-between items-center">
       {/* Logo */}
       <div className="flex items-center pl-16 lg:pl-12">
-        <Image src="/go_round_logo.png" alt="6oAround Logo" width={200} height={50} />
+        <Image src={'https://cbcbfvvlzsalhunyonzv.supabase.co/storage/v1/object/public/placePict/Logo.svg'} alt="6oAround Logo" width={200} height={50} />
       </div>
 
       {/* Search bar (visible only on large screens) */}
@@ -68,11 +68,6 @@ const CategoriesNavbar: React.FC = () => {
         <div className="p-4 ">
           {/* Search bar */}
           <div className="flex items-center border-4 border-[#124076] rounded-lg overflow-hidden bg-white mb-4">
-            <input
-              type="text"
-              placeholder="Entertainment"
-              className="px-8 py-2 w-full focus:outline-none font-bold"
-            />
             <div className="pr-3">
               <Image src="/search_icon.svg" alt="Search Icon" width={20} height={20} />
             </div>
