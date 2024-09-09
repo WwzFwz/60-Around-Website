@@ -66,13 +66,6 @@ const CategoriesNavbar: React.FC = () => {
 
         {/* Sidebar content */}
         <div className="p-4 ">
-          {/* Search bar */}
-          <div className="flex items-center border-4 border-[#124076] rounded-lg overflow-hidden bg-white mb-4">
-            <div className="pr-3">
-              <Image src="/search_icon.svg" alt="Search Icon" width={20} height={20} />
-            </div>
-          </div>
-      
           {/* Bookmark */}
           <div className="ml-6 mb-6">
             <Image src="/bookmark.svg" alt="Bookmark" width={50} height={50} />
