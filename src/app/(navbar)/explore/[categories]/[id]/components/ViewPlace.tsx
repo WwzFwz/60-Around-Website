@@ -107,7 +107,7 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
             {categories?.map((category: Category) => (
               <div key={category.id} className="flex items-center">
                 <Image
-                  src={`/icons/${category.name.toLowerCase()}.svg`} 
+                  src={`/icons/${category.name.toLowerCase()}.png`} 
                   alt={category.name}
                   width={30}
                   height={30}
