@@ -23,7 +23,7 @@ const CategoriesNavbar: React.FC = () => {
         <div className="flex items-center border-4 border-[#124076] rounded-lg overflow-hidden w-full bg-white">
           <input
             type="text"
-            placeholder="Entertainment"
+            placeholder="Search based on Category"
             className="px-4 py-2 w-full focus:outline-none font-bold"
           />
           <div className="pr-3">
