@@ -17,7 +17,8 @@ export default function Page() {
           <input
             type="text"
             placeholder="Search based on category"
-            className="w-80 p-3 mb-8 border-2 border-orange-500 rounded-l-lg text-lg"
+            className="w-full max-w-[20rem] p-3 mb-8 border-2 border-orange-500 rounded-l-lg text-lg"
+            disabled
           />
           <button className="bg-orange-500 text-white mb-8 p-3 rounded-r-lg hover:bg-orange-600">
             Search
@@ -27,31 +28,31 @@ export default function Page() {
         {/* Button Section */}
         <div className="flex flex-wrap justify-center gap-4 lg:justify-between max-w-5xl mx-auto w-full">
           <Link href="/explore/entertainment">
-            <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
+            <button className="bg-[#FFC374] text-gray-800 py-2 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[10rem]">
               <Image src="/icons/entertainment.png" alt="Entertainment" width={20} height={20} />
               <span>Entertainment</span>
             </button>
           </Link>
           <Link href="/explore/foodies">
-            <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
+            <button className="bg-[#FFC374] text-gray-800 py-2 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[10rem]">
               <Image src="/icons/foodies.png" alt="Foodies" width={20} height={20} />
               <span>Foodies</span>
             </button>
           </Link>
           <Link href="/explore/study">
-            <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
+            <button className="bg-[#FFC374] text-gray-800 py-2 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[10rem]">
               <Image src="/icons/study.png" alt="Study" width={20} height={20} />
               <span>Study</span>
             </button>
           </Link>
           <Link href="/explore/sport-and-health">
-            <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
+            <button className="bg-[#FFC374] text-gray-800 py-2 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[10rem]">
               <Image src="/icons/sport-and-health.svg" alt="Sport & Health" width={20} height={20} />
               <span>Sport & Health</span>
             </button>
           </Link>
           <Link href="/explore/household">
-            <button className="bg-[#FFC374] text-gray-800 py-3 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[150px]">
+            <button className="bg-[#FFC374] text-gray-800 py-2 px-4 rounded hover:bg-orange-300 flex items-center space-x-2 flex-grow min-w-[10rem]">
               <Image src="/icons/household.png" alt="Household" width={20} height={20} />
               <span>Household</span>
             </button>
@@ -61,4 +62,3 @@ export default function Page() {
     </div>
   );
 }
-

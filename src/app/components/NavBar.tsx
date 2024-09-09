@@ -14,7 +14,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 bg-transparent font-poppins">
+    <header className="fixed top-0 left-0 right-0 z-30 bg-transparent font-poppins">
       <div className="flex justify-between items-center p-6">
         {/* Logo */}
         <div className="flex items-center pl-16 lg:pl-12">
