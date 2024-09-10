@@ -12,19 +12,27 @@ const CategoriesNavbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-[#F9E897]  h-32 w-full flex  justify-between items-center">
+    <nav className="bg-[#F9E897] h-32 w-full flex justify-between items-center">
+      {/* Hamburger icon (visible on small screens) */}
+      <div className="lg:hidden flex items-center order-1 ml-4"> {/* Hamburger menu di kiri pada layar kecil */}
+        <button onClick={toggleSidebar} className="text-3xl">
+          <FaBars />
+        </button>
+      </div>
+
       {/* Logo */}
-      <div className="flex items-center pl-16 lg:pl-12">
+      <div className="flex items-center pl-16 lg:pl-12 order-3 lg:order-1"> {/* Logo di kanan pada layar kecil */}
         <Image src={'https://cbcbfvvlzsalhunyonzv.supabase.co/storage/v1/object/public/placePict/Logo.svg'} alt="6oAround Logo" width={200} height={50} />
       </div>
 
       {/* Search bar (visible only on large screens) */}
-      <div className="hidden lg:flex items-center  justify-between w-1/2"> {/* Reduced search bar width */}
+      <div className="hidden lg:flex items-center justify-between w-1/2 order-2"> {/* Search bar tetap di tengah pada layar besar */}
         <div className="flex items-center border-4 border-[#124076] rounded-lg overflow-hidden w-full bg-white">
           <input
             type="text"
             placeholder="Search based on Category"
             className="px-4 py-2 w-full focus:outline-none font-bold"
+            disabled
           />
           <div className="pr-3">
             <Image src="/search_icon.svg" alt="Search Icon" width={20} height={20} />
@@ -33,22 +41,15 @@ const CategoriesNavbar: React.FC = () => {
       </div>
 
       {/* Bookmark (closer to search bar) */}
-      <div className="hidden lg:flex ml-4"> {/* Reduced margin for closer placement */}
+      <div className="hidden lg:flex ml-4 order-4 cursor-pointer"> {/* Bookmark tetap di kanan pada layar besar */}
         <Image src="/bookmark.svg" alt="Bookmark" width={50} height={50} />
       </div>
 
       {/* Sign Up button (closer to bookmark) */}
-      <div className="hidden lg:flex ml-4"> {/* Reduced margin for closer placement */}
-        <Link href="/" className="px-6 py-3 border-2 bg-[#124076] text-white rounded-lg"> {/* Slightly smaller button */}
+      <div className="hidden lg:flex ml-4 order-5"> {/* Sign Up button tetap di kanan pada layar besar */}
+        <Link href="/" className="px-6 py-3 border-2 bg-[#124076] text-white rounded-lg">
           Sign Up
         </Link>
-      </div>
-
-      {/* Hamburger icon (visible on small screens) */}
-      <div className="lg:hidden flex items-center">
-        <button onClick={toggleSidebar} className="text-3xl">
-          <FaBars />
-        </button>
       </div>
 
       {/* Sidebar (visible on mobile when hamburger menu is clicked) */}
@@ -65,7 +66,7 @@ const CategoriesNavbar: React.FC = () => {
         </button>
 
         {/* Sidebar content */}
-        <div className="p-4 ">
+        <div className="p-4">
           {/* Bookmark */}
           <div className="ml-6 mb-6">
             <Image src="/bookmark.svg" alt="Bookmark" width={50} height={50} />
@@ -82,4 +83,3 @@ const CategoriesNavbar: React.FC = () => {
 };
 
 export default CategoriesNavbar;
-

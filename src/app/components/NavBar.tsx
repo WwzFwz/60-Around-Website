@@ -17,7 +17,7 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-30 bg-transparent font-poppins">
       <div className="flex justify-between items-center p-6">
         {/* Logo */}
-        <div className="flex items-center pl-16 lg:pl-12">
+        <div className=" flex items-center pl-16 lg:pl-12 lg:relative lg:right-auto absolute right-1">
           <Image src={'https://cbcbfvvlzsalhunyonzv.supabase.co/storage/v1/object/public/placePict/Logo.svg'} alt="6oAround Logo" width={200} height={50} />
         </div>
 
