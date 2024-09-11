@@ -14,11 +14,11 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-10 bg-transparent font-poppins">
+    <header className="fixed top-0 left-0 right-0 z-30 bg-transparent font-poppins">
       <div className="flex justify-between items-center p-6">
         {/* Logo */}
-        <div className="flex items-center pl-16 lg:pl-12">
-          <Image src="/go_round_logo.png" alt="6oAround Logo" width={200} height={50} />
+        <div className=" flex items-center pl-16 lg:pl-12 lg:relative lg:right-auto absolute right-1">
+          <Image src={'https://cbcbfvvlzsalhunyonzv.supabase.co/storage/v1/object/public/placePict/Logo.svg'} alt="6oAround Logo" width={200} height={50} />
         </div>
 
         {/* Navbar Links (visible on large screens) */}
@@ -75,10 +75,10 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
-      {/* Sidebar for mobile view */}
+      
+      {/* Sidebar for mobile view  z */}
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-[#F9E897] z-50 transform ${
+        className={`fixed top-0 left-0 h-full w-64 bg-[#FFC374] z-50 transform ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } transition-transform duration-300 ease-in-out lg:hidden`}
       >

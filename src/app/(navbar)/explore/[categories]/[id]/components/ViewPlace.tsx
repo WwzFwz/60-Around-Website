@@ -74,16 +74,17 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
         />
 
         {/* Text Above Button */}
-        <p className="mt-4 text-lg font-bold text-[#124076] text-left w-[600px]">
+        <p className="mt-4 text-lg font-bold text-[#124076] text-left w-full lg:w-[600px]">
           Sudah Pernah Kesini?
         </p>
 
         {/* Review Button */}
         <Link href={`/explore/${category}/${id}/review`}>
-          <button className="mt-2 w-[600px] bg-[#F9E897] text-[#124076] font-bold py-4 text-lg rounded-lg">
+          <button className="mt-2 w-[20rem] lg:w-[38rem] bg-[#F9E897] text-[#124076] font-bold py-4 text-lg rounded-lg hover:bg-[#F9D860] transition-colors duration-200">
             Review
           </button>
         </Link>
+
       </div>
       {/* Right Section */}
       <div className="w-full lg:w-1/2 pl-8 lg:pl-0 flex flex-col lg:h-[calc(100vh-200px)] lg:flex-grow">
@@ -92,15 +93,19 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
 
         {/* Votes, Price Level, Price Range, Categories */}
         <div className="flex items-center text-lg mb-4 space-x-4">
-          <span>{place.totalLikes} Likes</span>
-          <span>|</span>
+          <span className='text-sm lg:text-lg'>{place.totalLikes} Likes</span>
+          <span className="text-xl lg:text-lg">|</span>
           {/* Render the price level icons */}
           {renderPriceLevel(place.priceLevel)}
-          <span>|</span>
-          <span>
-            {place.priceRangeLower} - {place.priceRangeUpper} / orang
+          <span className="text-xl lg:text-lg">|</span>
+          <span className='text-sm lg:text-lg'>
+            {place.priceRangeLower === 0 && place.priceRangeUpper === 0 
+              ? 'Free' 
+              : `${place.priceRangeLower / 1000}k - ${place.priceRangeUpper / 1000}k / orang`}
           </span>
-          <span>|</span>
+
+
+          <span className="text-xl lg:text-lg">|</span>
           {/* Category Logos */}
           <div className="flex space-x-2">
             {categories?.map((category: Category) => (
@@ -118,7 +123,7 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
         </div>
 
         {/* Content */}
-        <p className="text-lg mb-6 text-black">{place.description}</p>
+        <p className="text-lg mb-6 text-black">{place.content?place.content:place.description}</p>
 
         {/* Google Maps Image with "Explore" Button */}
         <div className="relative mt-auto pb-6">  {/* mt-auto pushes this element to the bottom */}
@@ -142,4 +147,5 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
 };
 
 export default ViewPlacePage;
+
 

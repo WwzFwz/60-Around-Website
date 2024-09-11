@@ -37,7 +37,6 @@ export default function Carousel() {
               alt={`Slide ${index}`}
               fill
               style={{ objectFit: "cover" }} // Gantikan objectFit dengan style
-              className="rounded-lg"
             />
           </div>
         ))}
