@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { FaBars } from 'react-icons/fa'; // Import the hamburger icon from React Icons
+// import Link from 'next/link';
+import { FaBars } from 'react-icons/fa'; 
 
 const CategoriesNavbar: React.FC = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage the sidebar visibility
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); 
 
   // Function to toggle the sidebar
   const toggleSidebar = () => {
@@ -14,7 +14,7 @@ const CategoriesNavbar: React.FC = () => {
   return (
     <nav className="bg-[#F9E897] h-32 w-full flex justify-between items-center">
       {/* Hamburger icon (visible on small screens) */}
-      <div className="lg:hidden flex items-center order-1 ml-4"> {/* Hamburger menu di kiri pada layar kecil */}
+      <div className="lg:hidden flex items-center order-1 ml-4"> 
         <button onClick={toggleSidebar} className="text-3xl">
           <FaBars />
         </button>
@@ -41,16 +41,16 @@ const CategoriesNavbar: React.FC = () => {
       </div>
 
       {/* Bookmark (closer to search bar) */}
-      <div className="hidden lg:flex ml-4 order-4 cursor-pointer"> {/* Bookmark tetap di kanan pada layar besar */}
+      <div className="hidden lg:flex ml-4 order-4 cursor-pointer"> 
         <Image src="/bookmark.svg" alt="Bookmark" width={50} height={50} />
       </div>
 
       {/* Sign Up button (closer to bookmark) */}
-      <div className="hidden lg:flex ml-4 order-5"> {/* Sign Up button tetap di kanan pada layar besar */}
+      {/* <div className="hidden lg:flex ml-4 order-5">
         <Link href="/" className="px-6 py-3 border-2 bg-[#124076] text-white rounded-lg">
           Sign Up
         </Link>
-      </div>
+      </div> */}
 
       {/* Sidebar (visible on mobile when hamburger menu is clicked) */}
       <div
@@ -73,9 +73,9 @@ const CategoriesNavbar: React.FC = () => {
           </div>
 
           {/* Sign Up button */}
-          <Link href="/signup" className="px-2 ml-2 py-4 border-2 bg-[#124076] text-white rounded-lg">
+          {/* <Link href="/signup" className="px-2 ml-2 py-4 border-2 bg-[#124076] text-white rounded-lg">
             Sign Up
-          </Link>
+          </Link> */}
         </div>
       </div>
     </nav>
