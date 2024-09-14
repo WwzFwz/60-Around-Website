@@ -126,21 +126,21 @@ const ViewPlacePage: React.FC<ViewPlaceProps> = ({id,category }) => {
         <p className="text-lg mb-6 text-black">{place.content?place.content:place.description}</p>
 
         {/* Google Maps Image with "Explore" Button */}
-        <div className="relative mt-auto pb-6">  {/* mt-auto pushes this element to the bottom */}
+        <div className="relative mt-auto pb-6 h-48 w-full lg:h-64">  
           <Image
-            src="/gmaps-test.svg" // Background image from g-maps folder
+            src="/g-maps.jpg" 
             alt="Map Preview"
-            width={820}
-            height={200}
-            className="rounded-lg"
+            layout='fill'
+            className="rounded-lg object-cover"
           />
-          {/* Button in the top-right corner */}
+          {/* Button in the bottom-right corner */}
           <Link href={googleMapsUrl} target="_blank">
             <button className="absolute bottom-8 right-8 bg-[#F9E897] text-[#124076] font-bold py-2 px-4 rounded-lg">
               Explore!
             </button>
           </Link>
         </div>
+
       </div>
     </div>
   );
