@@ -59,13 +59,13 @@ export default function Navbar() {
           >
             About Us
           </a> */}
-          <a
+          {/* <a
             href="/"
             className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2 ml-4"
             style={{ fontSize: '18px', fontWeight: '600', lineHeight: '30px' }}
           >
             Sign Up
-          </a>
+          </a> */}
         </nav>
 
         {/* Hamburger Icon (visible on small screens) */}
@@ -128,13 +128,13 @@ export default function Navbar() {
           >
             About Us
           </a> */}
-          <a
+          {/* <a
             href="/login"
             className="text-white hover:text-gray-300 border border-white rounded-full px-4 py-2"
             style={{ fontSize: '18px', fontWeight: '600', lineHeight: '30px' }}
           >
             Sign Up
-          </a>
+          </a> */}
         </nav>
       </div>
     </header>

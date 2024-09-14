@@ -14,13 +14,16 @@ export default function ClientLayout({
 
   return (
     <>
-      {/* Conditionally Render CustomNavbar or Main Navbar */}
-      {pathname.startsWith("/explore/") ? (
-        <CategoriesNavbar />
-      ) : (
-        <Navbar />
+      {pathname !== "/game" && (
+        pathname.startsWith("/explore/") ? (
+          <CategoriesNavbar />
+        ) : (
+          <Navbar />
+        )
       )}
+
       <TRPCReactProvider>{children}</TRPCReactProvider>
     </>
   );
 }
+
